@@ -1,0 +1,313 @@
+\usepackage[a4paper, margin=1in]{geometry}
+% math
+\usepackage{amsmath, amssymb, amsthm, stmaryrd, bbold}
+% plot
+\usepackage{tikz, pgfplots,tikz-cd}
+\usetikzlibrary{calc, decorations.markings, decorations.pathmorphing,shapes}
+% form
+\usepackage{diagbox}
+% link
+\usepackage[colorlinks, citecolor=blue, linkcolor=blue, urlcolor=blue, breaklinks=true]{hyperref}
+% others
+\usepackage{mdframed}
+\usepackage{natbib}
+\allowdisplaybreaks[4]
+\pgfplotsset{compat=1.18}
+
+% --- FONT STUFF ---
+\usepackage{newpxtext}
+
+\usepackage[T1]{fontenc}
+
+\definecolor{CUPurple}{RGB}{117,15,109}
+\definecolor{CULightPurple}{RGB}{172, 111, 167}
+\definecolor{CULightPurple2}{RGB}{214, 183, 211}
+
+%%Blues
+\definecolor{YaleBlue} {HTML}{00356b}
+%\definecolor{YaleMidBlue} {HTML}{286dc0}
+%\definecolor{YaleLightBlue} {HTML}{63aaff}
+
+\definecolor{YaleMidBlue} {HTML}{286dc0}
+\definecolor{YaleLightBlue} {HTML}{b0d4ff}
+\definecolor{YaleMidGrey} {HTML}{e0dcda}
+\definecolor{YaleLightGrey} {HTML}{eeeeee}
+
+%%Green
+\definecolor{ao}{rgb}{117, 15, 109}
+
+%%Greys
+\definecolor{YaleBlack} {HTML}{222222}
+\definecolor{YaleDarkGrey} {HTML}{4a4a4a}
+%\definecolor{YaleMidGrey} {HTML}{978d85}
+%\definecolor{YaleLightGrey} {HTML}{dddddd}
+\definecolor{YaleWhite} {HTML}{f9f9f9}
+\definecolor{YaleLightGreen}{HTML}{AFB896}
+%%Accents
+\definecolor{YaleGreen} {HTML}{5f712d}
+\definecolor{YaleOrange} {HTML}{bd5319}
+
+\newcommand{\spd}[1]{(#1+1)d}
+\newcommand{\mb}[1]{\mathbf{#1}}
+
+%% Note
+\newcommand{\XY}[1]{\textcolor{YaleMidBlue}{[Xinping: #1]}}
+\newcommand{\XYY}[1]{\textcolor{YaleMidBlue}{[#1]}}
+\newcommand{\CQ}[1]{\textcolor{YaleMidGrey}{[Chenqi: #1]}} 
+
+% --- Theorem
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lem}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{convention}{Convention}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{example}{Example}
+\newtheorem{question}{Question}
+
+% --- Macros ---
+
+%% Fields
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\jj}{\mathrm{j}}
+\newcommand{\kk}{\mathrm{k}}
+\newcommand{\ee}{\mathrm{e}}
+
+%% Category cal
+\newcommand{\cA}{ {\cal A} } 
+\newcommand{\cB}{ {\cal B} }
+\newcommand{\cC}{ {\cal C} } 
+\newcommand{\cD}{ {\cal D} } 
+\newcommand{\cE}{ {\cal E} } 
+\newcommand{\cF}{ {\cal F} } 
+\newcommand{\cG}{ {\cal G} } 
+\newcommand{\cH}{ {\cal H} } 
+\newcommand{\cI}{{\cal I}}
+\newcommand{\cJ}{{\cal J}}
+\newcommand{\cK}{ {\cal K} } 
+\newcommand{\cL}{ {\cal L} } 
+\newcommand{\cM}{ {\cal M} } 
+\newcommand{\cN}{ {\cal N} } 
+\newcommand{\cO}{\mathcal{O}} 
+\newcommand{\cP}{ {\cal P} } 
+\newcommand{\cQ}{ {\cal Q} } 
+\newcommand{\cR}{ {\cal R} } 
+\newcommand{\cS}{ {\cal S} } 
+\newcommand{\cT}{ {\cal T} } 
+\newcommand{\cU}{ {\cal U} } 
+\newcommand{\cV}{ {\cal V} } 
+\newcommand{\cW}{ {\cal W} } 
+\newcommand{\cX}{ {\cal X} } 
+\newcommand{\cY}{ {\cal Y} } 
+\newcommand{\cZ}{ {\cal Z} }
+
+%% eucal
+\newcommand{\eA}{\eucal{A}}
+\newcommand{\eB}{\eucal{B}}
+\newcommand{\eC}{\eucal{C}}
+\newcommand{\eD}{\eucal{D}}
+\newcommand{\eE}{\eucal{E}}
+\newcommand{\eF}{\eucal{F}}
+\newcommand{\eG}{\eucal{G}}
+\newcommand{\eH}{\eucal{H}}
+\newcommand{\eI}{\eucal{I}}
+\newcommand{\eJ}{\eucal{J}}
+\newcommand{\eK}{\eucal{K}}
+\newcommand{\eL}{\eucal{L}}
+\newcommand{\eM}{\eucal{M}}
+\newcommand{\eN}{\eucal{N}}
+\newcommand{\eO}{\eucal{O}}
+\newcommand{\eP}{\eucal{P}}
+\newcommand{\eQ}{\eucal{Q}}
+\newcommand{\eR}{\eucal{R}}
+\newcommand{\eS}{\eucal{S}}
+\newcommand{\eT}{\eucal{T}}
+\newcommand{\eU}{\eucal{U}}
+\newcommand{\eV}{\eucal{V}}
+\newcommand{\eW}{\eucal{W}}
+\newcommand{\eX}{\eucal{X}}
+\newcommand{\eY}{\eucal{Y}}
+\newcommand{\eZ}{\eucal{Z}}
+
+%% sf
+\newcommand{\sA}{ {\mathsf A} } 
+\newcommand{\sB}{ {\mathsf B} }
+\newcommand{\sC}{ {\mathsf C} } 
+\newcommand{\sD}{ {\mathsf D} } 
+\newcommand{\sE}{ {\mathsf E} } 
+\newcommand{\sF}{ {\mathsf F} } 
+\newcommand{\sG}{ {\mathsf G} } 
+\newcommand{\sH}{ {\mathsf H} } 
+\newcommand{\sI}{{\mathsf I}}
+\newcommand{\sJ}{{\mathsf J}}
+\newcommand{\sK}{ {\mathsf K} } 
+\newcommand{\sL}{ {\mathsf L} } 
+\newcommand{\sM}{ {\mathsf M} } 
+\newcommand{\sN}{ {\mathsf N} } 
+\newcommand{\sO}{ {\mathsf O} } 
+\newcommand{\sP}{ {\mathsf P} } 
+\newcommand{\sQ}{ {\mathsf Q} } 
+\newcommand{\sR}{ {\mathsf R} } 
+\newcommand{\sS}{ {\mathsf S} } 
+\newcommand{\sT}{ {\mathsf T} } 
+\newcommand{\sU}{ {\mathsf U} } 
+\newcommand{\sV}{ {\mathsf V} } 
+\newcommand{\sW}{ {\mathsf W} } 
+\newcommand{\sX}{ {\mathsf X} } 
+\newcommand{\sY}{ {\mathsf Y} } 
+\newcommand{\sZ}{ {\mathsf Z} }
+
+%% frak
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fD}{\mathfrak{D}}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fS}{\mathfrak{S}}
+\newcommand{\fZ}{\mathfrak{Z}}
+
+%% Category bf
+\newcommand{\BB}{\mathbf{B}}
+\newcommand{\Bm}{\mathbf{m}} 
+\newcommand{\Bn}{\mathbf{n}} 
+\newcommand{\Br}{\mathbf{r}} 
+\newcommand{\Bs}{\mathbf{s}} 
+\newcommand{\Bt}{\mathbf{t}} 
+\newcommand{\Bu}{\mathbf{u}} 
+\newcommand{\Bv}{\mathbf{v}} 
+\newcommand{\Bw}{\mathbf{w}} 
+\newcommand{\Bp}{\mathbf{p}}
+\newcommand{\BI}{\mathbf{I}}
+\newcommand{\Ve}{\mathsf{Vec}}
+\newcommand{\sVec}{\mathsf{sVec}}
+\newcommand{\Hilb}{\mathsf{Hilb}}
+\newcommand{\sHilb}{\mathsf{sHilb}}
+\newcommand{\ssHilb}{\underline{\mathbf{sHilb}}}
+\newcommand{\Grp}{\mathbf{Grp}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\Is}{\mathbf{Is}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\zero}{\mathbf{0}}
+
+%% Category rm
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\tTr}{\mathrm{tTr}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\coev}{\mathrm{coev}}
+\newcommand{\Ob}{\mathop\mathrm{Ob}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\categoricalEnd}{{\mathsf{End}}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Fun}{\mathsf{Fun}}
+\newcommand{\rev}{\mathrm{rev}}
+\newcommand{\Pen}{\mathrm{Pen}}
+\newcommand{\Rep}{\mathsf{Rep}}
+\newcommand{\sRep}{\mathop\mathrm{sRep}}
+\newcommand{\Mod}{\mathop\mathrm{Mod}}
+\newcommand{\RMod}{\mathrm{RMod}}
+\newcommand{\LMod}{\mathrm{LMod}}
+\newcommand{\BMod}{\mathrm{BMod}}
+\newcommand{\Free}{\mathrm{Free}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\TY}{\mathrm{TY}}
+\newcommand{\Irr}{\mathrm{Irr}}
+\newcommand{\Idem}{\mathrm{Idem}}
+\newcommand{\B}{\mathrm{B}}
+\newcommand{\chargef}{\mathsf{fgt}}
+
+
+%% Mathematical operators
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\xt}{\times}
+\newcommand{\ot}[1][]{\underset{#1}{\otimes}}
+\newcommand{\op}[1][]{\underset{#1}{\oplus}}
+\newcommand{\oop}{\bigoplus}
+\newcommand{\oot}{\bigotimes}
+\newcommand{\rt}[1][]{\underset{#1}{\triangleright}}
+\newcommand{\lt}[1][]{\underset{#1}{\triangleleft}}
+\newcommand{\bt}[1][]{\underset{#1}{\boxtimes}}
+\newcommand{\ar}{\rightarrow}
+\newcommand{\Ar}{\Rightarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\sur}{\twoheadrightarrow}
+\newcommand{\cen}[2]{{#1}^\mathrm{cen}_{#2}}
+\newcommand{\Cp}{\Sigma}
+\newcommand{\cond}{\mathrel{\,\hspace{.75ex}\joinrel\rhook\joinrel\hspace{-.75ex}\joinrel\rightarrow}}
+\newcommand{\Cond}{\mathrel{\,\joinrel\raisebox{0.25ex}{$\rhook$}\joinrel\hspace{-1ex}\joinrel\Rightarrow}}
+
+%% Brackets
+\newcommand{\la}{\langle} 
+\newcommand{\ra}{\rangle}
+\newcommand{\sym}{\mathrm{sym}}
+\newcommand{\scr}{\mathrm{scr}}
+\newcommand{\bl}[1]{{\hat{#1}}}
+\newcommand{\fgt}{\mathrm{fgt}}
+\newcommand{\spann}{\mathrm{span}}
+
+%% Tikzs
+\tikzstyle string=[thin,postaction={decorate},decoration={markings,
+    mark=at position 0.5*\pgfdecoratedpathlength+.5*4pt with {\arrow[scale=1]{stealth}}}]
+\newcommand{\diagram}[2]{
+\begin{tikzpicture}[baseline=(current bounding box),scale=#1]
+#2
+\end{tikzpicture}
+}
+
+% HW
+\newcommand{\pt}[1]{{\color{red}(#1')}}
+\newcommand{\der}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+
+% *** quiver ***
+% A package for drawing commutative diagrams exported from https://q.uiver.app.
+%
+% This package is currently a wrapper around the `tikz-cd` package, importing necessary TikZ
+% libraries, and defining a new TikZ style for curves of a fixed height.
+%
+% Version: 1.5.3
+% Authors:
+% - varkor (https://github.com/varkor)
+% - AndréC (https://tex.stackexchange.com/users/138900/andr%C3%A9c)
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{quiver}[2021/01/11 quiver]
+
+% `tikz-cd` is necessary to draw commutative diagrams.
+\RequirePackage{tikz-cd}
+% `amssymb` is necessary for `\lrcorner` and `\ulcorner`.
+\RequirePackage{amssymb}
+% `calc` is necessary to draw curved arrows.
+\usetikzlibrary{calc}
+% `pathmorphing` is necessary to draw squiggly arrows.
+\usetikzlibrary{decorations.pathmorphing}
+
+% A TikZ style for curved arrows of a fixed height, due to AndréC.
+\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+    .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    .. (\tikztotarget)\tikztonodes}},
+    settings/.code={\tikzset{quiver/.cd,#1}
+        \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
+    quiver/.cd,pos/.initial=0.35,height/.initial=0}
+
+% TikZ arrowhead/tail styles.
+\tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
+\tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
+\tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
+% TikZ arrow styles.
+\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+
+\endinput

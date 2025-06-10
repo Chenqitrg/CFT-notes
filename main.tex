@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\include{preamble}
+\title{From conformal bootstrap to vertex operator algebra}
+\author{Chenqi Meng}
+\date{June 2025}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{abstract}
+    Vertex operator algebra (VOA) clarifies which part of the CFT is \emph{definition} and which part of it is \emph{derivation}.
+    This note reviews conformal field theory algebraically. We avoid the formal introduction of VOA, but always bear in mind that there is some underlying abstract definition of the CFT. 
+\end{abstract}
+\tableofcontents
+\section{Basic ingredients}
+\subsection{Kinematical data}
+For closed string CFT, one considers dynamics on $S^1$. 
+
+Usually, the Hilbert space on $S^1$ is the Lagrangian algebra in $\frak{Z}(\mathrm{Mod}_{\cV_0})$:
+\[
+\cH = \bigoplus_{h,\bar{h}}\cV_{h}\otimes\overline{\cV}_{\bar{h}}.
+\]
+Each $\cV_{h}$($\overline{\cV}_{\bar{h}}$) is naturally $\Z$-graded:
+\[
+\cV_h = \bigoplus_{n\in \Z} V_{h+n}.
+\]
+The ``ground state'' corresponds to a special vector $\one \otimes\overline{\one} \in V_{0}\otimes \overline{V}_0\subset \cV_{0}\otimes \overline{\cV}_0$.
+Here $\cV_0$ is the corresponding chiral VOA, and each $\cV_h$ is a module of $\cV_0$.
+
+\subsection{Dynamical data}
+In CFT, encoding the dynamical data is alreadily achieved by the conformal invariance, as the Hamiltonian (generator of time translation) is a special component of the conformal transformation.
+
+We focus on the chiral algebra $\cV_0$. There exists a map called the intertwining operator $Y$:
+\[
+Y:\cV_0\rightarrow \End(\cV_0)[[z,z^{-1}]],
+\]
+which maps a state $|\phi\ra\in \cV_0$ to a chiral field $\phi(z):\cV_0\rightarrow \cV_0$. Here $V[[z,z^{-1}]]$ denotes the vector space of Laurant polynomial with coefficients in $V$.
+\[
+V[[z,z^{-1}]] = \left\{\sum_{n\in \Z}v_nz^{n}:v_n\in V\right\}.
+\]
+
+[TODO: fill the gap between the Virasoro algebra and intertwining operator by refering to \cite{vertex_operator_algebra:Wikipedia}.]
+
+The definition of the VOA is precise, abstract but hollow. Since it is difficult to give any explicit examples, we will not dive into its detail so far.
+
+By definition of VOA, there is a specific $\omega\in V_{-2}$, such that $T(z) = Y(\omega, z)$ is the energy-momentum tensor, which is expanded as
+\[
+Y(\omega, z) = \sum_{n\in\Z}L_n z^{-n-2}.
+\]
+
+\subsection{Operator product expansion}
+We firstly consider a trivial case
+\[
+Y(\omega, z)\phi_h = \sum_{n\in\Z}z^{-n-2}L_n\phi_h = \sum_{n\leq 0}z^{-n-2}L_n\phi_h = \frac{h\phi_h}{z^2}+\frac{L_{-1}\phi_h}{z}+O(1).
+\]
+By definition of the vertex operator and VOA \cite{vertex_operator_algebra:Wikipedia}, 
+\[
+L_{-1}\phi_h = \lim_{z\rightarrow 0}L_{-1}Y(\phi_h, z)\one = \lim_{z\rightarrow 0}[L_{-1},Y(\phi_h, z)]\one = \lim_{z\rightarrow 0}\frac{\dd}{\dd z}Y(\phi_h, z)\one := \partial \phi_h.
+\]
+Thus the above action becomes the one that is usually seen in physics books
+\[
+T(z)\phi_h \sim \frac{h\phi_h}{z^2}+\frac{\partial \phi_h}{z}
+\]
+
+
+Suppose there is a way to ``tensor'' $\cV_0$-modules, and there is a module intertwining operator
+\[
+Y:\cV_i\rightarrow \oplus_{k}\Hom(\cV_{j},\cV_{k})[[z,z^{-1}]].
+\]
+By the property of VOA \cite{vertex_operator_algebra:Wikipedia}\footnote{Here we cheated by considering the module intertwining operator.}, we have
+\[
+x^{L_0}Y(\phi_i, z)\phi_j = x^{L_0}Y(\phi_i, z) x^{-L_0} x^{L_0}\phi_j = x^{h_j}Y(x^{L_0} \phi_i, xz)\phi_j =x^{h_i + h_j}Y(\phi_i, xz)\phi_j
+\]
+We thus expand the $Y(\phi_i, z)\phi_j$. 
+\[
+Y(\phi_i, z)\phi_j = \sum_{p, \{N_k\in\Z\}_{k}}C_{ij}{}^{p,\{N\}}z^{\alpha_{ijp,{N}}}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
+\]
+Here $\alpha_{ijpN}$ is a number to be determined.
+We act $x^{L_0}$ to the both hand sides. On one hand, we have
+\[
+x^{h_i+h_j}\sum_{p,\{N\}}C_{ij}{}^{p,\{N\}}(xz)^{\alpha_{ijp{N}}}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
+\]
+On the other hand, we have
+\[
+\sum_{p,\{N\}}C_{ij}{}^{p,\{N\}}z^{\alpha_{ijpN}}x^{h_p+\sum_{k}N_k}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
+\]
+To make two results match, the power of $x$ must match, thus
+\[
+\alpha_{ijpN} = h_p-h_i-h_j+\sum_{k}N_k.
+\]
+
+Thus we update our ansatz:
+\[
+Y(\phi_i, z)\phi_j = \sum_{p, \{N_k\in\Z\}_{k}}C_{ij}{}^{p,\{N\}}z^{h_p-h_i-h_j+\sum_{k}N_k}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
+\]
+
+The next step is to use the representation property. For simplicity, we suppose now all $\phi_{i,j,p}$ are primaries. Acting $L_n$ ($n\geq 1$) to the both hand sides, on one hand, by the quasi-conformality \cite{vertex_operator_algebra:Wikipedia}, the LHS becomes
+\[
+L_nY(\phi_i, z)\phi_j = [L_n, Y(\phi_i, z)]\phi_j = \left((n+1)h_iz^n + z^{n+1}\frac{\dd}{\dd z}\right)Y(\phi_i, z)\phi_j.
+\]
+This is similar to the ``comultiplication'' map of Hopf algebras \cite{Moore:1988qv}.
+
+On the other hand, the RHS can be directly calculated.
+
+We now calculate the case $C_{ij}{}^{p,\{1,0,0,\cdots\}}$. Acting $L_1$ to both hand sides, we have on one hand, 
+\[
+\left(2h_i z + z^2\frac{\dd}{\dd z}\right)\left(C_{ij}{}^p z^{h_p-h_i-h_j}\phi_p+C_{ij}{}^{p,\{1,0,\cdots\}}z^{h_p-h_i-h_j+1}L_{-1}\phi_p + \cdots\right).
+\]
+On the other hand,
+\[
+L_1\left(C_{ij}{}^p z^{h_p-h_i-h_j}\phi_p+C_{ij}{}^{p,\{1,0,\cdots\}}z^{h_p-h_i-h_j+1}L_{-1}\phi_p + \cdots\right) = \left(C_{ij}{}^{p,\{1,0,\cdots\}}z^{h_p-h_i-h_j+1}2h_p\phi_p + \cdots\right).
+\]
+By comparing the coefficient, we have
+\[
+C_{ij}{}^{p,\{1,0,\cdots\}} = \left(\frac{1}{2} + \frac{h_i-h_j}{2h_p}\right) C_{ij}{}^{p}.
+\]
+
+Other coefficients can be obtained recursively. Since all coefficients are determined iteratively, they all contain a term $C_{ij}{}^k$. Thus $C_{ij}{}^k$ part is the ``topological skeleton'', and the remaining part is dynamical.
+
+\section{Minimal model}
+\subsection{Verma module}
+Each $\cV_h$ is a module of $\cV_0$. Since Virasoro algebra $\mathrm{Vir} = \la T\ra\subset \cV_0$ is a subalgebra, each $\cV_h$ is at least a module of $\mathrm{Vir}$. There exists a lowest weight representation, where
+\[
+L_0\phi_{c,h} = h\phi_{c,h},\quad C\phi_{c,h} = c\phi_{c,h},\quad L_{n}\phi_h = 0,\quad \forall n\geq 1.
+\]
+For the simplicity of notation, we drop the $c$ notation in the following.
+We define the subspace
+\[
+K = \left\{\chi\in  \mathrm{Vir}\cdot \phi_h: \mathrm{Vir}\cdot \chi\cap \C\phi_h = 0\right\}
+\]
+called the null subspace. Then the quotient space $\mathrm{Vir}\cdot \phi_h/K$ is called the Verma module.
+
+\subsection{Kac determinant}
+Let $\phi_h$ be the lowest weight vector. The minimal model aims to calculate when the free module $\mathrm{Vir}\cdot \phi_h$ is maximally reducible. 
+
+Since $\mathrm{Vir}\cdot \phi_h = \oplus_{n}V_n$ is $\Z$-graded by eigenvalues of $L_0$, spaces with different gradings are orthogonal\footnote{Here we cheated. Previously we do not discuss star structure of VOA. In the following, we assume $L_n^\dagger = L_{-n}$.}. For each graded subspace $V_n$, we obtain a metric parametrized by $(c,h)$, called the Gram matrix, denoted as $M_n(c,h)$. The determinant of $M_n(c,h)$ is called the Kac determinant, which has been calculated explicitly
+\[
+\det{M_n(c,h)} = \alpha_n \prod_{r,s\geq 1}^{rs\leq n}\left(h-h_{r,s}(c)\right)^{p(n-rs)},
+\]
+where $p(n-rs)$ is the number of partition of integers $n-rs$, and $\alpha_n$ is the positive constant independent of $c$ and $h$. Here
+\begin{align*}
+    h_{r,s}(c) &= h_0 + \frac{1}{4}\left(r\alpha_++s\alpha_-\right)^2,\\
+    h_0 &= \frac{1}{24}(c-1),\\
+    \alpha_\pm &= \frac{\sqrt{1-c}\pm \sqrt{25-c}}{\sqrt{24}}.
+\end{align*}
+
+Thus those $h_{r,s}(c)$ are desired scaling dimensions that makes the free module maximally reducible.
+
+We also wish the number of different $h_{r,s}(c)$ to be finite. We interprete the 
+\bibliography{ref}
+\bibliographystyle{abbrv}
+\end{document}
