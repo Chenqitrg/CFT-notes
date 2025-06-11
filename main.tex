@@ -129,7 +129,7 @@ For the simplicity of notation, we drop the $c$ notation in the following. The s
 \[
 L_{-1}^{n_1}L_{-2}^{n_2}\cdots L_{-k}^{n_k}\phi_{h}
 \]
-is a module of $\mathrm{Vir}$, called the Verma module, denoted by $U(\mathrm{Vir}^-)\otimes \phi_h$\footnote{There exists a strict definition of Verma module, see \cite{Wikipedia:Verma_module}}.
+is a module of $\mathrm{Vir}$, called the Verma module, denoted by $U(\mathrm{Vir}^-)\otimes \phi_h$\footnote{There exists a strict definition of Verma module, see \cite{Wikipedia:Verma_module}.}.
 
 
 We define the subspace
@@ -139,9 +139,9 @@ K = \left\{\chi\in  U(\mathrm{Vir}^-)\otimes \phi_h: U(\mathrm{Vir}^-)\otimes \c
 called the null subspace. Then the quotient space $U(\mathrm{Vir}^-)\otimes \phi_h/K$ is another module of $\mathrm{Vir}$ but with the zero modes removed.
 
 \subsection{Kac determinant}
-Let $\phi_h$ be the lowest weight vector. The minimal model aims to calculate when the free module $\mathrm{Vir}\cdot \phi_h$ is maximally reducible. 
+Let $\phi_h$ be the lowest weight vector. The minimal model aims to calculate when the Verma module $U(\mathrm{Vir}^-)\otimes \phi_h$ is ``maximally reducible''. 
 
-Since $\mathrm{Vir}\cdot \phi_h = \oplus_{n}V_n$ is $\Z$-graded by eigenvalues of $L_0$, spaces with different gradings are orthogonal\footnote{Here we cheated. Previously we do not discuss star structure of VOA. In the following, we assume $L_n^\dagger = L_{-n}$.}. For each graded subspace $V_n$, we obtain a metric parametrized by $(c,h)$, called the Gram matrix, denoted as $M_n(c,h)$. The determinant of $M_n(c,h)$ is called the Kac determinant, which has been calculated explicitly
+Since $U(\mathrm{Vir}^-)\otimes \phi_h = \oplus_{n}V_n$ is $\Z$-graded by the eigenvalues of $L_0$, spaces with different gradings are orthogonal\footnote{Here we cheated. Previously we do not discuss star structure of VOA. In the following, we assume $L_n^\dagger = L_{-n}$.}. For each graded subspace $V_n$, we obtain a metric parametrized by $(c,h)$, called the Gram matrix, denoted as $M_n(c,h)$. The determinant of $M_n(c,h)$ is called the Kac determinant, which has been calculated explicitly
 \[
 \det{M_n(c,h)} = \alpha_n \prod_{r,s\geq 1}^{rs\leq n}\left(h-h_{r,s}(c)\right)^{p(n-rs)},
 \]
@@ -154,7 +154,21 @@ where $p(n-rs)$ is the number of partition of integers $n-rs$, and $\alpha_n$ is
 
 Thus those $h_{r,s}(c)$ are desired scaling dimensions that makes the free module maximally reducible.
 
-We also wish the number of different $h_{r,s}(c)$ to be finite. We interprete the 
+We also wish the number of different $h_{r,s}(c)$ to be finite. We interprete the term $(r\alpha_++s\alpha_-)$ term as the inner product $(r,s)\cdot (\alpha_+,\alpha_-)$. Thus $(r\alpha_++s\alpha_-)^2 = \delta^2(\alpha_+^2+\alpha_-^2)$, where $\delta$ is the distance between the point $(r,s)$ and the line $\alpha_+ x+ \alpha_- y = 0$. Clearly, except that when $\tan\theta = -\frac{\alpha_+}{\alpha_-} = \frac{p}{p'}$ is rational, there are infinite points $(r,s)$ that can be arbitrarily near to the line $\alpha_+ x+ \alpha_- y = 0$.
+
+From the condition, we can solve for $c$ in terms of $\frac{p}{p'}$:
+\[
+c = 13 - 6\times \frac{p^2+p'^2}{pp'} = 1- 6\times \frac{(p-p')^2}{pp'}.
+\]
+And
+\[
+h_{r,s} = \frac{(pr-p's)^2 - (p-p')^2}{4pp'},\quad 1\leq r \leq p'-1,\quad 1\leq s \leq p-1.
+\]
+
+\subsection{Reduction of the Verma module}
+We now reduce the Verma module for each $(r,s)$ by quotienting its null subspace.
+
+
 \bibliography{ref}
 \bibliographystyle{abbrv}
 \end{document}
