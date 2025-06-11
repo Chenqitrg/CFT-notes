@@ -134,7 +134,7 @@ is a module of $\mathrm{Vir}$, called the Verma module, denoted by $U(\mathrm{Vi
 
 We define the subspace
 \[
-K = \left\{\chi\in  U(\mathrm{Vir}^-)\otimes \phi_h: U(\mathrm{Vir}^-)\otimes \chi\cap \C\phi_h = 0\right\}
+K = \left\{\chi\in  U(\mathrm{Vir}^-)\otimes \phi_h: U(\mathrm{Vir}^+)\cdot \chi\cap \C\phi_h = 0\right\}
 \]
 called the null subspace. Then the quotient space $U(\mathrm{Vir}^-)\otimes \phi_h/K$ is another module of $\mathrm{Vir}$ but with the zero modes removed.
 
@@ -166,7 +166,34 @@ h_{r,s} = \frac{(pr-p's)^2 - (p-p')^2}{4pp'},\quad 1\leq r \leq p'-1,\quad 1\leq
 \]
 
 \subsection{Reduction of the Verma module}
-We now reduce the Verma module for each $(r,s)$ by quotienting its null subspace.
+We now reduce the Verma module $V_{r,s}$ for each $(r,s)$ by quotienting its null subspace. We repeat the formulation in \cite{Francesco1997}, but with precise language.
+
+For Verma module $V_{r,s}$, by the form of Kac determinant, the first null vector appears at the level $n = rs$, with scaling dimension $h_{r,s}+rs$. By the symmetricity $h_{p'-r,p-s} = h_{r,s}$, there is another null vector at the level $(p'-r)(p-s)$, with scaling dimension $h_{r,s}+(p'-r)(p-s)$. Moreover, since $p(0) = 1$, the null spaces in these ranks are all of dimension $1$. It can be proved that
+\begin{align*}
+    h_{r,s}+rs &= h_{p'+r,p-s},\\
+    h_{r,s}+(p'-r)(p-s) &= h_{r,2p-s}.
+\end{align*}
+Thus as a lowest-weight vector, their Verma module are isomorphic to $V_{p'+r,p-s}$ and $V_{r,2p-s}$ respectively.
+
+However, these two Verma modules, when embedded to $V_{r,s}$, has non-trivial union, which is the pull-back of these embeddings
+% https://q.uiver.app/#q=WzAsNCxbMSwxLCJWX3tyLHN9Il0sWzAsMSwiVl97cCcrcixwLXN9Il0sWzEsMCwiVl97MnAnLXIsc30iXSxbMCwwLCJWX3twJytyLHAtc31cXHNxbltWX3tyLHN9XVZfezJwJy1yLHN9Il0sWzMsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDAsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsMCwiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyLWludmVyc2UifX1dXQ==
+\[\begin{tikzcd}
+	{V_{p'+r,p-s}\xt[V_{r,s}]V_{2p'-r,s}} & {V_{2p'-r,s}} \\
+	{V_{p'+r,p-s}} & {V_{r,s}}
+	\arrow[hook, from=1-1, to=1-2]
+	\arrow[hook, from=1-1, to=2-1]
+	\arrow["\ulcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow[hook, from=1-2, to=2-2]
+	\arrow[hook, from=2-1, to=2-2]
+\end{tikzcd}\]
+Let $X :=V_{p'+r,p-s}\xt[V_{r,s}]V_{2p'-r,s}$, then the reduced space will be the quotient space of the push-forward $V_{r,s}/V_{p'+r,p-s}\squ[X]V_{2p'-r,s}$.
+
+Here is a question that I cannot answer at the moment:
+\begin{question}
+    Whether the space $V_{p'+r,p-s}\squ[X]V_{2p'-r,s}$ is the total null space?
+\end{question}
+
+
 
 
 \bibliography{ref}
