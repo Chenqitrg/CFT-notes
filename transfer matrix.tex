@@ -102,8 +102,18 @@ Let $\lambda'_{ij}$ be the eigenvalue of the new transfer matrix, then
 \[
 \frac{\lambda'_{ij}}{\lambda_{00}} = \exp{\left[2\pi\ii\tau'\left(h_i -\frac{c}{24}\right) -2\pi\ii \bar{\tau}'\left( h_j-\frac{c}{24}\right) - 2\pi\ii(\bar{\tau}-\tau)\frac{c}{24}\right]}.
 \]
+
 In particular, the central charge can be obtained from
 \[
-\frac{\lambda'_{00}}{\lambda_{00}} = \exp\left[2\pi\ii\left(\tau -\tau'-\bar{\tau}+\bar{\tau}'\right)\frac{c}{24}\right].
+\frac{\lambda'_{00}}{\lambda_{00}} = \exp\left[2\pi\ii\left(\tau -\tau'-\bar{\tau}+\bar{\tau}'\right)\frac{c}{24}\right] = \exp\left[-\pi \Im{(\tau-\tau')}\frac{c}{6} \right].
+\]
+And the conformal dimensions can be obtained from
+\[
+\frac{\lambda'_{ij}}{\lambda'_{00}} = \exp\left[-2\pi\Im{\tau'} (h_i+h_j) + 2\pi\ii \Re{\tau'} (h_i-h_j)\right].
+\]
+
+When $\tau = \ii$, we have $\tau' = \frac{\ii}{2}$. Then the conformal data are calculated via
+\[
+\frac{\lambda'_{00}}{\lambda_{00}} = \ee^{-\frac{\pi c}{12}},\quad \frac{\lambda'_{ij}}{\lambda'_{00}} = \ee^{-\pi(h_i+h_j)}.
 \]
 \end{document}

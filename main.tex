@@ -21,7 +21,7 @@ For closed string CFT, one considers dynamics on $S^1$.
 
 Usually, the Hilbert space on $S^1$ is the Lagrangian algebra in $\frak{Z}(\mathrm{Mod}_{\cV_0})$:
 \[
-\cH = \bigoplus_{h,\bar{h}}\cV_{h}\otimes\overline{\cV}_{\bar{h}}.
+\cH = \bigoplus_{h,\bar{h}}N_{h,\bar{h}}\cV_{h}\otimes\overline{\cV}_{\bar{h}}.
 \]
 Each $\cV_{h}$($\overline{\cV}_{\bar{h}}$) is naturally $\Z$-graded:
 \[
@@ -33,11 +33,11 @@ Here $\cV_0$ is the corresponding chiral VOA, and each $\cV_h$ is a module of $\
 \subsection{Dynamical data}
 In CFT, encoding the dynamical data is alreadily achieved by the conformal invariance, as the Hamiltonian (generator of time translation) is a special component of the conformal transformation.
 
-We focus on the chiral algebra $\cV_0$. There exists a map called the intertwining operator $Y$:
+We focus on the chiral algebra $\cV_0$. There exists a map called the intertwining operator $Y$\footnote{This map is usually called the state-operator correspondance in physics books. However, physics books always neglect that $Y$ is an axiom that cannot be derived.}:
 \[
 Y:\cV_0\rightarrow \End(\cV_0)[[z,z^{-1}]],
 \]
-which maps a state $|\phi\ra\in \cV_0$ to a chiral field $\phi(z):\cV_0\rightarrow \cV_0$. Here $V[[z,z^{-1}]]$ denotes the vector space of Laurant polynomial with coefficients in $V$.
+which maps a state $\phi \in \cV_0$ to a chiral field $\phi(z):\cV_0\rightarrow \cV_0$. Here $V[[z,z^{-1}]]$ denotes the vector space of Laurant polynomial with coefficients in $V$.
 \[
 V[[z,z^{-1}]] = \left\{\sum_{n\in \Z}v_nz^{n}:v_n\in V\right\}.
 \]
@@ -66,46 +66,45 @@ T(z)\phi_h \sim \frac{h\phi_h}{z^2}+\frac{\partial \phi_h}{z}
 \]
 
 
-Suppose there is a way to ``tensor'' $\cV_0$-modules, and there is a module intertwining operator
+We define \cite{Moore:1988qv} the space of intertwining operators to be the space spanned by \footnote{Here we cheated, the right hand side is not the integer expansion.}
 \[
-Y:\cV_i\rightarrow \oplus_{k}\Hom(\cV_{j},\cV_{k})[[z,z^{-1}]].
+Y:\cV_i\rightarrow \oplus_{k}\Hom(\cV_{j},\cV_{k})[[z,z^{-1}]]
 \]
-By the property of VOA \cite{vertex_operator_algebra:Wikipedia}\footnote{Here we cheated by considering the module intertwining operator.}, we have
-\[
-x^{L_0}Y(\phi_i, z)\phi_j = x^{L_0}Y(\phi_i, z) x^{-L_0} x^{L_0}\phi_j = x^{h_j}Y(x^{L_0} \phi_i, xz)\phi_j =x^{h_i + h_j}Y(\phi_i, xz)\phi_j
-\]
+satisfying the quasi-conformality:
+\begin{equation}\label{eq: quasiconf}
+    [L_n, Y(\phi, z)] = \left((n+1)hz^n + z^{n+1}\frac{\dd}{\dd z}\right)Y(\phi, z),\quad \forall n\geq 0,\quad \phi\in V_{i}.
+\end{equation}
+Here $\phi$ is a primary field. 
+
+This operator is similar to the 3j symbol in the group representation theory, where the solution of the intertwining equation gives the fusion space. The operator $Y$ is what we call operator product expansion. In the terribly written classic CFT textbook \cite{Francesco1997}, the equation \eqref{eq: quasiconf} is implicitly used to ``derive'' the general OPE, infact, \eqref{eq: quasiconf} is the only equation used there. However, it is a definition rather than a derivation. This is similar to the ``comultiplication'' map of Hopf algebras \cite{Moore:1988qv}, which is an input data to define the tensor product of two Hopf algebra modules.
+
 We thus expand the $Y(\phi_i, z)\phi_j$. 
 \[
 Y(\phi_i, z)\phi_j = \sum_{p, \{N_k\in\Z\}_{k}}C_{ij}{}^{p,\{N\}}z^{\alpha_{ijp,{N}}}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
 \]
-Here $\alpha_{ijpN}$ is a number to be determined.
-We act $x^{L_0}$ to the both hand sides. On one hand, we have
+Here $\alpha_{ijpN}$ and $C_{ij}{}^{p,\{N\}}$ are numbers to be determined.
+
+Taking $n = 0$, we have, on one hand,
 \[
-x^{h_i+h_j}\sum_{p,\{N\}}C_{ij}{}^{p,\{N\}}(xz)^{\alpha_{ijp{N}}}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
+L_0 Y(\phi_i, z)\phi_j = \sum_{p,\{N\}}(h_p+N1+2N2+\cdots kN_k)C_{ij}{}^{p,\{N\}}z^{\alpha_{ijp\{N\}}}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
 \]
-On the other hand, we have
+On the other hand, 
 \[
-\sum_{p,\{N\}}C_{ij}{}^{p,\{N\}}z^{\alpha_{ijpN}}x^{h_p+\sum_{k}N_k}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
+L_0 Y(\phi_i, z)\phi_j = \left(h_i+h_j+z\frac{\dd}{\dd z}\right)Y(\phi_i,z)\phi_j.
 \]
 To make two results match, the power of $x$ must match, thus
 \[
-\alpha_{ijpN} = h_p-h_i-h_j+\sum_{k}N_k.
+\alpha_{ijpN} = h_p-h_i-h_j+\sum_{k}kN_k.
 \]
 
 Thus we update our ansatz:
 \[
-Y(\phi_i, z)\phi_j = \sum_{p, \{N_k\in\Z\}_{k}}C_{ij}{}^{p,\{N\}}z^{h_p-h_i-h_j+\sum_{k}N_k}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
+Y(\phi_i, z)\phi_j = \sum_{p, \{N_k\in\N\}_{k}}C_{ij}{}^{p,\{N\}}z^{h_p-h_i-h_j+\sum_{k}kN_k}L_{-1}^{N_1}L_{-2}^{N_2}\cdots L_{-k}^{N_k}\phi_p.
 \]
 
-The next step is to use the representation property. For simplicity, we suppose now all $\phi_{i,j,p}$ are primaries. Acting $L_n$ ($n\geq 1$) to the both hand sides, on one hand, by the quasi-conformality \cite{vertex_operator_algebra:Wikipedia}, the LHS becomes
-\[
-L_nY(\phi_i, z)\phi_j = [L_n, Y(\phi_i, z)]\phi_j = \left((n+1)h_iz^n + z^{n+1}\frac{\dd}{\dd z}\right)Y(\phi_i, z)\phi_j.
-\]
-This is similar to the ``comultiplication'' map of Hopf algebras \cite{Moore:1988qv}.
+The next step is to successively use \eqref{eq: quasiconf}. 
 
-On the other hand, the RHS can be directly calculated.
-
-We now calculate the case $C_{ij}{}^{p,\{1,0,0,\cdots\}}$. Acting $L_1$ to both hand sides, we have on one hand, 
+As an example, we now calculate the case $C_{ij}{}^{p,\{1,0,0,\cdots\}}$. Acting $L_1$ to both hand sides, we have on one hand, 
 \[
 \left(2h_i z + z^2\frac{\dd}{\dd z}\right)\left(C_{ij}{}^p z^{h_p-h_i-h_j}\phi_p+C_{ij}{}^{p,\{1,0,\cdots\}}z^{h_p-h_i-h_j+1}L_{-1}\phi_p + \cdots\right).
 \]
@@ -118,7 +117,7 @@ By comparing the coefficient, we have
 C_{ij}{}^{p,\{1,0,\cdots\}} = \left(\frac{1}{2} + \frac{h_i-h_j}{2h_p}\right) C_{ij}{}^{p}.
 \]
 
-Other coefficients can be obtained recursively. Since all coefficients are determined iteratively, they all contain a term $C_{ij}{}^k$. Thus $C_{ij}{}^k$ part is the ``topological skeleton'', and the remaining part is dynamical.
+Other coefficients can be obtained recursively. Since all coefficients are determined iteratively, they all contain a term $C_{ij}{}^k$, which can be chosen freely and thus define a fusion space.
 
 \section{Minimal model}
 \subsection{Verma module}
@@ -126,12 +125,18 @@ Each $\cV_h$ is a module of $\cV_0$. Since Virasoro algebra $\mathrm{Vir} = \la 
 \[
 L_0\phi_{c,h} = h\phi_{c,h},\quad C\phi_{c,h} = c\phi_{c,h},\quad L_{n}\phi_h = 0,\quad \forall n\geq 1.
 \]
-For the simplicity of notation, we drop the $c$ notation in the following.
+For the simplicity of notation, we drop the $c$ notation in the following. The space spanned by all
+\[
+L_{-1}^{n_1}L_{-2}^{n_2}\cdots L_{-k}^{n_k}\phi_{h}
+\]
+is a module of $\mathrm{Vir}$, called the Verma module, denoted by $U(\mathrm{Vir}^-)\otimes \phi_h$\footnote{There exists a strict definition of Verma module, see \cite{Wikipedia:Verma_module}}.
+
+
 We define the subspace
 \[
-K = \left\{\chi\in  \mathrm{Vir}\cdot \phi_h: \mathrm{Vir}\cdot \chi\cap \C\phi_h = 0\right\}
+K = \left\{\chi\in  U(\mathrm{Vir}^-)\otimes \phi_h: U(\mathrm{Vir}^-)\otimes \chi\cap \C\phi_h = 0\right\}
 \]
-called the null subspace. Then the quotient space $\mathrm{Vir}\cdot \phi_h/K$ is called the Verma module.
+called the null subspace. Then the quotient space $U(\mathrm{Vir}^-)\otimes \phi_h/K$ is another module of $\mathrm{Vir}$ but with the zero modes removed.
 
 \subsection{Kac determinant}
 Let $\phi_h$ be the lowest weight vector. The minimal model aims to calculate when the free module $\mathrm{Vir}\cdot \phi_h$ is maximally reducible. 
