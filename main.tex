@@ -19,7 +19,7 @@
 \subsection{Kinematical data}
 For closed string CFT, one considers dynamics on $S^1$. 
 
-Usually, the Hilbert space on $S^1$ is the Lagrangian algebra in $\frak{Z}(\mathrm{Mod}_{\cV_0})$:
+Usually, the Hilbert space on $S^1$ is the Lagrangian algebra in $\frak{Z}(\mathsf{Mod}_{\cV_0})\cong \mathsf{Mod}_{\cV_0}\bt \overline{\mathsf{Mod}_{\cV_0}}$:
 \[
 \cH = \bigoplus_{h,\bar{h}}N_{h,\bar{h}}\cV_{h}\otimes\overline{\cV}_{\bar{h}}.
 \]
@@ -28,12 +28,19 @@ Each $\cV_{h}$($\overline{\cV}_{\bar{h}}$) is naturally $\Z$-graded:
 \cV_h = \bigoplus_{n\in \Z} V_{h+n}.
 \]
 The ``ground state'' corresponds to a special vector $\one \otimes\overline{\one} \in V_{0}\otimes \overline{V}_0\subset \cV_{0}\otimes \overline{\cV}_0$.
-Here $\cV_0$ is the corresponding chiral VOA, and each $\cV_h$ is a module of $\cV_0$.
+Here $\cV_0$ is the corresponding VOA, and each $\cV_h$ is a irreducible module of $\cV_0$.
+
+An VOA is the local symmetry of a chiral CFT, which describes the canonical chiral boundary of the chiral topological order $\Mod_{\cV_0}$.
+
+For the diagonal CFT, the Hilbert space is the diagonal Lagrangian algebra
+\[
+L = \bigoplus_{i\in\Irr(\Mod_{\cV_0})}i\bt \bar{i}\in \Mod{}_{\cV_0}\bt \overline{\Mod{}_{\cV_0}}.
+\]
 
 \subsection{Dynamical data}
 In CFT, encoding the dynamical data is alreadily achieved by the conformal invariance, as the Hamiltonian (generator of time translation) is a special component of the conformal transformation.
 
-We focus on the chiral algebra $\cV_0$. There exists a map called the intertwining operator $Y$\footnote{This map is usually called the state-operator correspondance in physics books. However, physics books always neglect that $Y$ is an axiom that cannot be derived.}:
+We focus on the VOA $\cV_0$. There exists a map called the intertwining operator $Y$\footnote{This map is usually called the state-operator correspondance in physics books. However, physics books always neglect that $Y$ is an axiom that cannot be derived.}:
 \[
 Y:\cV_0\rightarrow \End(\cV_0)[[z,z^{-1}]],
 \]
@@ -190,11 +197,97 @@ Let $X :=V_{p'+r,p-s}\xt[V_{r,s}]V_{2p'-r,s}$, then the reduced space will be th
 
 Here is a question that I cannot answer at the moment:
 \begin{question}
-    Whether the space $V_{p'+r,p-s}\squ[X]V_{2p'-r,s}$ is the total null space?
+    Whether the space $V_{p'+r,p-s}\squ[X]V_{2p'-r,s}$ is the total null subspace?
 \end{question}
 
+Such kind of embeddings can iteratively continue\footnote{In what sense does this embedding net ``converge''?}.
 
 
+\section{Boundary CFT}
+\subsection{Physical constraint}
+In this section, we review the boundary CFT.
+
+Let's suppose the CFT is defined on the upper half plane $\mathbb{H}$. Operators can either insert on $\R$ or on the upper half plane.
+
+Let's input some physical arguments. We require that the boundary cannot change the total parallel momentum. This means\footnote{The physical meaning of $T_{yx}$ is the current flowing to the $y$-direction carrying the momentum of the $x$-direction.} \cite{cardy2008boundaryconformalfieldtheory}
+\[
+T_{yx}(x) = 0,\quad \forall x\in \R.
+\]
+Change to the holomorphic(anti-holomorphic) basis, the no-flow condition implies that
+\[
+T(x) := \lim_{z\rightarrow x}T(z) = \lim_{\bar{z}\rightarrow x}\overline{T}(\bar{z}),\quad \forall x\in \R.
+\]
+
+Let's be more careful of the condition here. Usually when we say that the total Virasoro algebra is the tensor product of two chiral one Virasoro algebras with the same chiral central charge:
+\begin{align*}
+    [L_m,\ L_n] &= (m-n)L_{m+n} + \frac{c}{12}m(m^2-1)\delta_{m+n, 0},\\
+    [L'_m,\ L'_n] &= (m-n)L'_{m+n} + \frac{c}{12}m(m^2-1)\delta_{m+n, 0}.
+\end{align*}
+However, when we combine them to form a anomaly-free theory with zero chiral central charge, we need to flip the orientation and identify
+\[
+\overline{L}_n = L'_{-m},\quad [x,\ y]_{\mathrm{rev}} = [y,\ x].
+\]
+Then the $(\{\overline{L}_n\},[-,-]_{\mathrm{rev}})$ spans the Virasoro algebra with the reversed chiral central charge:
+\[
+[\overline{L}_m,\ \overline{L}_n]_{\mathrm{rev}} = (m-n)\overline{L}_{m+n} - \frac{c}{12}m(m^2-1)\delta_{m+n, 0}.
+\]
+And $\overline{T}(\bar{z})$ is defined by
+\[
+\overline{T}(\bar{z}) := \sum_{n\in\Z}\overline{L}_n \bar{z}^{-n-2}.
+\]
+
+For any boundary state $\phi_B\in \cH_{\B}$, the no-flow condition reduces to\footnote{Here, we use a different convention from \cite{cardy2008boundaryconformalfieldtheory}. The $L'$ here is $\overline{L}$ in \cite{cardy2008boundaryconformalfieldtheory}. We wish by separate $\overline{L}$ and $L'$ can help us to clarify why $n$ needs to be reversed.}
+\[
+L_n\cdot \phi_B = \overline{L}_{n}\cdot \phi_B = L'_{-n}\cdot \phi_B.
+\]
+
+\subsection{Ishibashi state}
+Here, we look for the form of $\phi_B$ in $\cH$. There is at least a choice, by choosing $\phi_B$ to be the linear expansion
+\[
+\phi_B = \sum_{X, X'}\alpha_{X, X'} \left(L_{X} \cdot \phi_{h}\right)\ot \left(L'_{X'} \cdot \phi_{h'}\right).
+\]
+Here $\phi_h$ and $\phi_{h'}$ are two primaries and $L_{X} = L_{-1}^{X_1}\cdots L_{-n}^{X_n}$, so as $L'_{X'}$.
+
+The condition $L_0 \cdot \phi_B = L'_0\cdot \phi_B$ implies that $h = h'$ and $h+N_X = h' + N_{X'}$. It is proved that such form of the state is unique up to a constant for each $h$, called the Ishibashi state, which is denoted as $\psi_h$:
+\[
+\psi_h = \sum_{X}\phi_h^{X}\ot \phi_{h}^{\prime X}.
+\]
+
+\subsection{Modular invariance}
+To have a consistent partition function on a annulus, we need to do input the constraint of the modular invariance. There are two different ways to interprete the partition function on annulus. The equality of these two will become the Cardy condition of the boundary CFT.
+
+We consider the partition function on a annulus with real modular parameter $q = \bar{q} = \ee^{2\pi \delta}$ and boundary conditions $a, b$. Here the real condition is necessary to unfold a double modular parameter to a chiral one.
+
+On one hand, suppose \footnote{This is related to the folding picture of the doubled CFT, which we will illustrate later.}
+\[
+\cH_{ab} = \bigoplus_{h}n_{ab}^h \cV_{h}.
+\]
+Then the chiral modular parameter is $1/2$ of the double modular parameter:
+\[
+Z_{ab}(\delta) = \sum_{h}n^{h}_{ab}\chi_h\left(\frac{\delta}{2}\right).
+\]
+
+On the other hand, suppose the boundary condition $a$ can be expanded by
+\[
+\phi_a = \sum_{h}A_{a, h}\psi_h.
+\]
+The transition amplitude can be calculated to be
+\[
+\left(\psi_h ,\  \ee^{-2\pi/\delta\left(L_0 - \frac{c}{24}\right)}\ee^{-2\pi/\delta\left(\overline{L}_0-\frac{c}{24}\right)} \psi_{k}\right) = \delta_{h,k}\chi_{h}\left(-\frac{2}{\delta}\right).
+\]
+Then the partition function is
+\[
+Z_{ab}(\delta) = \sum_{h}A_{a,h}A_{b,h}^* \chi_{h}\left(-\frac{2}{\delta}\right).
+\]
+
+Thus according to the modular covariance of the character
+\[
+\chi_h(-1/\tau) = \sum_{k}S_{hk}\chi_k(\tau),
+\]
+we have the identity, called the Cardy condition:
+\[
+\sum_{k}A_{a,k}A_{b,k}^* S_{kh} = n^h_{ab}\in \Z_{\geq 0}.
+\]
 
 \bibliography{ref}
 \bibliographystyle{abbrv}
