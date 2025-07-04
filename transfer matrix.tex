@@ -161,6 +161,154 @@ This transfer matrix has the modular parameter
 \[
 \tau = \frac{1}{3(1-\ii)} = \frac{1}{6}(1+\ii).
 \]
+
+It would be nice if one can directly compute conformal spins without another the TRG step.
+There are possibly other choices of the unit cell on the checkerboard:
+\[
+\diagram{1}{
+\foreach \i in {0, 1, 2}
+{
+    \foreach \j in {0}
+    {
+        \fill[opacity = .2] (2*\i, 2*\j) rectangle (2*\i+1, 2*\j+1);
+        \fill[opacity = .2] (2*\i+1, 2*\j+1) rectangle (2*\i+2, 2*\j+2);
+    }
+}
+\fill[orange, opacity = .2] (1,0) -- (0,1) -- (5,2) -- (6, 1) -- cycle;
+\draw[->, red] (1,0) -- (0,1);
+\draw[->, blue] (1,0) -- (6,1);
+},
+\]
+whose modular parameter is
+\[
+\tau = \frac{-1+\ii}{5+\ii} = \frac{-2+3 \ii}{13}.
+\]
+Similar to the previous approach, we find another transfer matrix that has the same spectrum. We regard each block as a tensor.
+If
+\[
+\diagram{1}{
+\foreach \i in {0, 1, 2}
+{
+    \foreach \j in {0}
+    {
+        \fill[opacity = .2] (2*\i, 2*\j) rectangle (2*\i+1, 2*\j+1);
+        \fill[opacity = .2] (2*\i+1, 2*\j+1) rectangle (2*\i+2, 2*\j+2);
+    }
+}
+\fill[orange, opacity = .2] (0,0) rectangle (6,1);
+\draw[->, red] (1,0) -- (0,1);
+\draw[->, blue] (1,0) -- (6,1);
+} \cdot \psi = \lambda \psi,
+\]
+where edges are matched in the zig-zag direction. Then
+\[
+\diagram{1}{
+\foreach \i in {0, 1, 2}
+{
+    \foreach \j in {0}
+    {
+        \fill[opacity = .2] (2*\i, 2*\j) rectangle (2*\i+1, 2*\j+1);
+        \fill[opacity = .2] (2*\i+1, 2*\j+1) rectangle (2*\i+2, 2*\j+2);
+    }
+}
+\fill[orange, opacity = .2] (0,0) -- (1,0) -- (6,1) -- (0,1) -- cycle;
+\draw[->, red] (1,0) -- (0,1);
+\draw[->, blue] (1,0) -- (6,1);
+} \cdot \diagram{1}{
+\foreach \i in {0, 1, 2}
+{
+    \foreach \j in {0}
+    {
+        \fill[opacity = .2] (2*\i, 2*\j) rectangle (2*\i+1, 2*\j+1);
+        \fill[opacity = .2] (2*\i+1, 2*\j+1) rectangle (2*\i+2, 2*\j+2);
+    }
+}
+\fill[orange, opacity = .2] (1,0) -- (6,0) -- (6,1) -- cycle;
+\draw[->, red] (1,0) -- (0,1);
+\draw[->, blue] (1,0) -- (6,1);
+}\cdot \psi = \lambda \psi
+\]
+Let
+\[
+\phi = \diagram{1}{
+\foreach \i in {0, 1, 2}
+{
+    \foreach \j in {0}
+    {
+        \fill[opacity = .2] (2*\i, 2*\j) rectangle (2*\i+1, 2*\j+1);
+        \fill[opacity = .2] (2*\i+1, 2*\j+1) rectangle (2*\i+2, 2*\j+2);
+    }
+}
+\fill[orange, opacity = .2] (1,0) -- (6,0) -- (6,1) -- cycle;
+\draw[->, red] (1,0) -- (0,1);
+\draw[->, blue] (1,0) -- (6,1);
+}\cdot \psi,
+\]
+then multiplying 
+\[
+\diagram{1}{
+\foreach \i in {0, 1, 2}
+{
+    \foreach \j in {0}
+    {
+        \fill[opacity = .2] (2*\i, 2*\j) rectangle (2*\i+1, 2*\j+1);
+        \fill[opacity = .2] (2*\i+1, 2*\j+1) rectangle (2*\i+2, 2*\j+2);
+    }
+}
+\fill[orange, opacity = .2] (1,0) -- (6,0) -- (6,1) -- cycle;
+\draw[->, red] (1,0) -- (0,1);
+\draw[->, blue] (1,0) -- (6,1);
+}
+\]
+to the both hand sides, we have
+\[
+\diagram{1}{
+\foreach \i in {0, 1, 2}
+{
+    \foreach \j in {0}
+    {
+        \fill[opacity = .2] (2*\i, 2*\j) rectangle (2*\i+1, 2*\j+1);
+        \fill[opacity = .2] (2*\i+1, 2*\j+1) rectangle (2*\i+2, 2*\j+2);
+    }
+}
+\fill[orange, opacity = .2] (0,0) -- (1,0) -- (6,1) -- (5,1) -- (5,2) -- (0,1) -- cycle;
+\draw[->, red] (1,0) -- (0,1);
+\draw[->, blue] (1,0) -- (6,1);
+} \cdot \phi = \lambda \phi.
+\]
+A similar argument can be applied to the small triangle in the left bottom side. Thus 
+\[
+\diagram{1}{
+\foreach \i in {0, 1, 2}
+{
+    \foreach \j in {0}
+    {
+        \fill[opacity = .2] (2*\i, 2*\j) rectangle (2*\i+1, 2*\j+1);
+        \fill[opacity = .2] (2*\i+1, 2*\j+1) rectangle (2*\i+2, 2*\j+2);
+    }
+}
+\fill[orange, opacity = .2] (1,0) -- (0,1) -- (5,2) -- (6, 1) -- cycle;
+\draw[->, red] (1,0) -- (0,1);
+\draw[->, blue] (1,0) -- (6,1);
+}
+\]
+and
+\[
+\diagram{1}{
+\foreach \i in {0, 1, 2}
+{
+    \foreach \j in {0}
+    {
+        \fill[opacity = .2] (2*\i, 2*\j) rectangle (2*\i+1, 2*\j+1);
+        \fill[opacity = .2] (2*\i+1, 2*\j+1) rectangle (2*\i+2, 2*\j+2);
+    }
+}
+\fill[orange, opacity = .2] (0,0) rectangle (6,1);
+\draw[->, red] (1,0) -- (0,1);
+\draw[->, blue] (1,0) -- (6,1);
+}
+\]
+have the same set of eigenvalues.
 \bibliography{ref}
 \bibliographystyle{abbrv}
 \end{document}
